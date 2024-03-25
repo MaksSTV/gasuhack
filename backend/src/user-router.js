@@ -1,24 +1,10 @@
 const Router = require('../framework/router');
+const controller = require('./user-controller')
 
 const router = new Router()
 
-const users = [
-    {id: 1, name: '4veg0s'},
-    {id: 2, name: 'MaksSTV'}
-]
+router.get('/users', controller.getUsers)
 
-router.get('/users', (req, res) => {
-    res.writeHead(200, {
-        'Content-type': 'application/json'
-    })
-    res.end(JSON.stringify(users))
-})
-
-router.post('/users', (req, res) => {
-    res.writeHead(200, {
-        'Content-type': 'application/json'
-    })
-    res.end(JSON.stringify(users))
-})
+router.post('/users', controller.createUser)
 
 module.exports = router
