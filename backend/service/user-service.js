@@ -40,11 +40,11 @@ class UserService {
     async login(email, password) {
         const user = await UserModel.findOne({where: {email}})
         if (!user) {
-            throw ApiError.BadRequest('Пользователь с таким email не найден')
+            throw ApiError.BadRequest('Неверный email или пароль')
         }
         const isPassEquals = await bcrypt.compare(password, user.password);
         if (!isPassEquals) {
-            throw ApiError.BadRequest('Неверный пароль')
+            throw ApiError.BadRequest('Неверный email или пароль')
         }
         const userDto = new UserDto(user)
         const tokens = tokenService.generateTokens({...userDto})
@@ -84,6 +84,11 @@ class UserService {
     async getAllUsers() {
         const users = await UserModel.findAll();
         return users
+    }
+
+    async findUser(email) {
+        const user = await UserModel.findOne({where: {email: email}})
+        return user
     }
 }
 
