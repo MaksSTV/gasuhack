@@ -2,7 +2,7 @@ const studMemberService = require("../service/stud_member-service");
 const {validationResult} = require('express-validator')
 const ApiError = require('../exceptions/api-error')
 
-class UserController {
+class StudMemberController {
     async addStudMember(req, res, next) {
         try {
             // const errors = validationResult(req)
@@ -52,4 +52,4 @@ class UserController {
     }
 }
 
-module.exports = new UserController()
+module.exports = new StudMemberController()
