@@ -1,26 +1,19 @@
 import { createRoot } from "react-dom/client"
-import { App } from "./App"
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { Suspense } from 'react'
-import { LazyAbout } from './components/About/LazyAbout'
+import App from "./App"
+import { BrowserRouter } from 'react-router-dom'
+import { createContext } from 'react'
+import Store from './store/store'
 
 
-const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <App />,
-		children: [ // дочерние ссылки 
-			{
-				path: "/about",
-				element: <Suspense fallback={'Loading...'}><LazyAbout /></Suspense>,
-			},
-			{
-				path: "/shop",
-				element: <div>shop</div>,
-			},
-		]
-	},
-])
+interface State {
+	store: Store
+}
+
+const store = new Store()
+
+export const Context = createContext<State>({
+	store,
+})
 
 const root = document.getElementById("root")
 
@@ -29,5 +22,13 @@ if (!root) {
 }
 
 const container = createRoot(root)
-container.render(<RouterProvider router={router} />)
-container.render(<App />)
+container.render(
+	<Context.Provider value={{
+		store
+	}}>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+	</Context.Provider>
+
+)
