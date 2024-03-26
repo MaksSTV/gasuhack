@@ -1,6 +1,6 @@
-import api from '@/http'
-import { IUser } from '@/models/IUser'
+import api from '@/app/http'
 import { AxiosResponse } from 'axios'
+import { IUser } from '../types/user.types'
 
 
 export default class UserService {

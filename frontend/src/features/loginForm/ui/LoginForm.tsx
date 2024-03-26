@@ -1,4 +1,4 @@
-import { Context } from '@/index'
+import { Context } from '@/app/index'
 import { observer } from 'mobx-react-lite'
 import { useContext, useState } from 'react'
 
