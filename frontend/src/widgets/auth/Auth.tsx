@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react'
 import { observer } from "mobx-react-lite"
-import { IUser } from '@/models/IUser'
-import UserService from '@/services/UserService'
-import LoginForm from '../LoginForm/LoginForm'
-import { Context } from '@/index'
+import UserService from '@/shared/services/UserService'
+import { Context } from '@/app/index'
+import { IUser } from '@/shared/types/user.types'
+import { LoginForm } from '@/features'
 
 
 function Auth() {
@@ -54,7 +54,7 @@ function Auth() {
 						store.user.isActivated ? `Аккаунт подтвержден по почте` : "Подтвердите аккаунт"
 					}
 				</h1>
-				<button onClick={() => store.logout()}></button>
+				<button onClick={() => store.logout()}>Выйти</button>
 				<div>
 					<button onClick={getUsers}>Получить пользователей</button>
 				</div>

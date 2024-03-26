@@ -1,7 +1,7 @@
-import { API_URL } from '@/http'
-import { IUser } from '@/models/IUser'
-import { AuthResponse } from '@/models/response/AuthResponse'
-import AuthService from '@/services/AuthService'
+import { API_URL } from '@/app/http'
+import { AuthResponse } from '@/shared/models/response/AuthResponse'
+import AuthService from '@/shared/services/AuthService'
+import { IUser } from '@/shared/types/user.types'
 import axios from 'axios'
 import { makeAutoObservable } from "mobx"
 
@@ -53,7 +53,7 @@ export default class Store {
 		try {
 			const response = await AuthService.logout()
 			localStorage.removeItem('token')
-			this.setAuth(true)
+			this.setAuth(false)
 			this.setUser({} as IUser)
 		} catch (e) {
 			console.log(e.response?.data?.message)

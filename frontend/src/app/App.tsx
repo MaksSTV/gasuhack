@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react-lite'
 import classes from "./App.module.scss"
 import { Routes, Route } from 'react-router'
-import { LazyAbout } from './components/About/LazyAbout'
-import Auth from './components/Auth/Auth'
+import { LazyAbout } from '../components/About/LazyAbout'
 import { Suspense } from 'react'
+import { Auth } from '@/widgets'
 
 function App() {
 

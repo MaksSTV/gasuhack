@@ -1,5 +1,5 @@
-import api from '@/http'
-import { AuthResponse } from '@/models/response/AuthResponse'
+import api from '@/app/http'
+import { AuthResponse } from '@/shared/models/response/AuthResponse'
 import { AxiosResponse } from 'axios'
 
 
