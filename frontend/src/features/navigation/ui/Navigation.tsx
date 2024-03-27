@@ -36,7 +36,7 @@ const Navigation = () => {
                         <li className="nav__list-item"><Link className="nav__list-link" to='/contacts'>Связаться с нами</Link></li>
                         <li className="nav__list-item"><Link className="nav__list-link" to='/auth'>Профиль</Link></li>
                         {
-                            store.user.role == "common"
+                            store.user.role == "admin"
                                 ? <li className="nav__list-item"><Link className="nav__list-link" to='/admin'>Админ</Link></li>
                                 : null
                         }

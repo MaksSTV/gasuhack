@@ -12,6 +12,12 @@
 	margin-top: 50px;
 }
 
+.group__title {
+	font-family: 'Open Sans Condensed';
+	font-size: 28px;
+	font-weight: 700;
+}
+
 .membersList__list {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -46,6 +52,7 @@
 	font-family: 'Open Sans Condensed';
 	font-size: 30px;
 	font-weight: 500;
+	text-decoration: underline;
 }
 
 .member__position {
@@ -73,4 +80,11 @@
 	height: 150px;
 	border-radius: 100%;
 	aspect-ratio: 1 / 1;
+}
+
+@media (max-width: 500px) {
+	.container_members {
+		width: 95%;
+		margin: 0;
+	}
 }

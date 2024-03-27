@@ -115,18 +115,22 @@ const data = [
 
 
 function MembersList() {
-	const [members, setMembers] = useState<IMember[]>(data)
+	const [members, setMembers] = useState<IMember[]>([])
 	//const [news, setNews] = useState<INews[]>([])
 	const [groups, setGroups] = useState<IGroup[]>([])
 
 	useEffect(() => {
-		/*async function getMembers() {
+		async function getMembers() {
 			const { data } = await axios.get<IMember[]>('http://localhost:5000/api/studboard')
 			setMembers(data)
 		};
-		getMembers()*/
-		setGroups(distributeIntoGroups(members))
+		getMembers()
+
 	}, [])
+
+	useEffect(() => {
+		setGroups(distributeIntoGroups(members))
+	}, [members])
 
 	return (
 		<div className='container_members'>
