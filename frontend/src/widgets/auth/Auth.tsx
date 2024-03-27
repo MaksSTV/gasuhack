@@ -1,15 +1,12 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { observer } from "mobx-react-lite"
-import UserService from '@/shared/services/UserService'
 import { Context } from '@/app/index'
-import { IUser } from '@/shared/types/user.types'
 import { LoginForm } from '@/features'
-
+import "./Auth.scss"
 
 function Auth() {
 
 	const { store } = useContext(Context)
-	const [users, setUsers] = useState<IUser[]>([])
 
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
@@ -17,14 +14,6 @@ function Auth() {
 		}
 	}, [])
 
-	async function getUsers() {
-		try {
-			const response = await UserService.fetchUsers()
-			setUsers(response.data)
-		} catch (e) {
-
-		}
-	}
 
 	if (store.isLoading) {
 		return (
@@ -34,35 +23,31 @@ function Auth() {
 
 	if (!store.isAuth) {
 		return (
-			<div>
+			<div className='container_auth'>
 				<LoginForm />
-				<button onClick={getUsers}>Получить пользователей</button>
 			</div>
 		)
 	}
 
 	return (
 		<>
-			<div>
-				<h1>
-					{
-						store.isAuth ? `Пользователь авторизован ${store.user.email}` : "Авторизуйтесь"
-					}
-				</h1>
-				<h1>
-					{
-						store.user.isActivated ? `Аккаунт подтвержден по почте` : "Подтвердите аккаунт"
-					}
-				</h1>
-				<button onClick={() => store.logout()}>Выйти</button>
-				<div>
-					<button onClick={getUsers}>Получить пользователей</button>
+			<div className='container_auth'>
+				<div className="auth">
+					<h1 className='auth__isAuth'>
+						{
+							store.isAuth ? `Пользователь авторизован ${store.user.email}` : "Авторизуйтесь"
+						}
+					</h1>
+					<h1 className='auth__isActivated'>
+						{
+							store.user.isActivated ? `Аккаунт подтвержден по почте` : "Подтвердите аккаунт на своей почте"
+						}
+					</h1>
+					<button
+						onClick={() => store.logout()}
+						className='btnForm'
+					>Выйти</button>
 				</div>
-				{
-					users.map(user =>
-						<div key={user.email}>{user.email}</div>
-					)
-				}
 			</div>
 		</>
 	)

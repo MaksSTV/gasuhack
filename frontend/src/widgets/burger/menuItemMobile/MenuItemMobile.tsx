@@ -32,6 +32,7 @@ export const MenuItemMobile = () => {
       <li className="nav__list-item--mobile"><Link className="nav__list-link" to='/calendar'>Календарь</Link></li>
       <li className="nav__list-item--mobile"><Link className="nav__list-link" to='/studboard'>Состав</Link></li>
       <li className="nav__list-item--mobile"><Link className="nav__list-link" to='/contacts'>Связаться с нами</Link></li>
+      <li className="nav__list-item--mobile"><Link className="nav__list-link" to='/auth'>Профиль</Link></li>
     </motion.ul>
   )
 }

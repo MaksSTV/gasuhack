@@ -1,4 +1,3 @@
-import classes from "./Header.module.scss"
 import { Navigation } from '@/features'
 
 function Header() {
