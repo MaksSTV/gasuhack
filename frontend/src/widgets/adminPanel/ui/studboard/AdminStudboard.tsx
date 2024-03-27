@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, styled, ButtonProps, MenuItem, Select, SelectChangeEvent, FormControl, InputLabel, Grid } from '@mui/material'
+import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, styled, ButtonProps, MenuItem, Select, SelectChangeEvent, FormControl, InputLabel, Grid, Container, Stack } from '@mui/material'
 import { useState } from 'react'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import { IMember } from '@/shared/types/user.types'
@@ -28,17 +28,50 @@ const VisuallyHiddenInput = styled('input')({
 })
 
 const InputFileUpload = () => {
+	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const file = event.target.files[0]
+		console.log(file)
+		const formData = new FormData()
+		formData.append("file", file)
+		console.log(formData) // Доступ к загруженному файлу
+	}
+
+	const [imageUrl, setImageUrl] = useState(null)
+
+	const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+		console.log(event)
+		const file = event.target.files[0]
+		console.log(file)
+		const reader = new FileReader()
+
+		reader.onloadend = () => {
+			console.log(reader.result)
+			//setImageUrl(reader.result)
+		}
+
+		reader.readAsDataURL(file)
+	}
+
 	return (
-		<ColorButton
-			component="label"
-			role={undefined}
-			variant="contained"
-			tabIndex={-1}
-			startIcon={<CloudUploadIcon />}
-		>
-			Загрузить фото
-			<VisuallyHiddenInput type="file" />
-		</ColorButton>
+		<>
+			<Container maxWidth="md" sx={{ mt: 8 }}>
+				<Stack direction="row" alignItems="center" spacing={2}>
+					<label htmlFor="upload-image">
+						<Button variant="contained" component="span">
+							Upload
+						</Button>
+						<input
+							id="upload-image"
+							hidden
+							accept="image/*"
+							type="file"
+							onChange={handleFileUpload}
+						/>
+					</label>
+					{imageUrl && <img src={imageUrl} alt="Uploaded Image" height="300" />}
+				</Stack>
+			</Container>
+		</>
 	)
 }
 

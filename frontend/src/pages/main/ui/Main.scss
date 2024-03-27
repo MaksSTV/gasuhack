@@ -102,6 +102,8 @@
 	.firstScreen__content {
 		width: 90%;
 		padding: 20px;
+		margin-right: 0;
+		margin-left: 0;
 	}
 	.firstScreen__img {
 		max-width: 100%;
@@ -111,5 +113,13 @@
 @media (max-width: 550px) {
 	.firstScreen__text {
 		font-size: 17px;
+	}
+
+	.container_main {
+		margin: 0;
+	}
+
+	.img__subtitle {
+		width: auto;
 	}
 }

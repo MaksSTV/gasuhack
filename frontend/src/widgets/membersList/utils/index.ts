@@ -26,5 +26,19 @@ export function distributeIntoGroups(data: IMember[]) {
 		data: groupedData[key]
 	}))
 
-	return groups
+	const order: Record<keyof typeof titles, number> = {
+		upper: 1,
+		department: 2,
+		faculty: 3,
+		project: 4
+	}
+
+	// Создаем новый массив групп, упорядоченный в соответствии с порядком
+	const orderedGroups = Object.keys(order)
+		.filter(key => groups.some(group => group.title === titles[key]))
+		.sort((a, b) => order[a as keyof typeof order] - order[b as keyof typeof order])
+		.map(key => groups.find(group => group.title === titles[key]))
+
+	console.log(orderedGroups)
+	return orderedGroups
 }
