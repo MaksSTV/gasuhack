@@ -2,6 +2,7 @@ const Router = require('express').Router
 const userController = require('../controllers/user-controller')
 const studMemberController = require('../controllers/stud_member-controller')
 const newsItemController = require('../controllers/news_item-controller')
+const s3Controller = require('../controllers/s3-controller')
 const router = new Router()
 const {body} = require('express-validator')
 const authMiddleware = require('../middlewares/auth-middleware')
@@ -57,5 +58,12 @@ router.patch('/news/:id',
     newsItemController.editNewsItem
 )
 router.get('/news', newsItemController.getAllNewsItems)
+
+// запросы для работы с s3-хранилищем
+router.post('/uploadFile',
+    authMiddleware,
+    authRoleMiddleware,
+    s3Controller.uploadFileToStorage
+)
 
 module.exports = router

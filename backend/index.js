@@ -1,4 +1,5 @@
 const dotenv = require('dotenv');
+const multer = require('multer');
 dotenv.config();
 const PORT = process.env.PORT || 5000;
 
@@ -10,7 +11,7 @@ const router = require('./router/index')
 const errorMiddleware = require('./middlewares/error-middleware')
 
 const app = express()
-
+app.use(multer().any());
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
