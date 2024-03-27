@@ -1,21 +1,27 @@
 import { observer } from 'mobx-react-lite'
-import classes from "./App.module.scss"
+import "./App.scss"
 import { Routes, Route } from 'react-router'
-import { LazyAbout } from '../components/About/LazyAbout'
-import { Suspense } from 'react'
 import { Auth } from '@/widgets'
+import { Footer, Header, Main, News, StudBoard } from '@/pages'
+import { Navigate } from 'react-router-dom'
 
 function App() {
 
 	return (
 		<>
-			<div className="app">
-				<header>header</header>
+			<div className='app'>
+				<Header />
 				<Routes>
-					<Route path='/' element={<Suspense fallback={'Loading...'}><LazyAbout /></Suspense>} />
+					<Route path='/' element={<Main />} />
+					<Route path='/news' element={<News />} />
+					<Route path='/studboard' element={<StudBoard />} />
 					<Route path='/auth' element={<Auth />} />
+					<Route
+						path="*"
+						element={<Navigate to="/" replace />}
+					/>
 				</Routes>
-				<footer>footer</footer>
+				<Footer />
 			</div>
 		</>
 	)

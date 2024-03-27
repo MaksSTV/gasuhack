@@ -49,7 +49,8 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
 			// Creates `style` nodes from JS strings
 			MiniCssExtractPlugin.loader,
 			// Translates CSS into CommonJS
-			cssLoaderWithModules,
+			//cssLoaderWithModules,
+			'css-loader',
 			// Compiles Sass to CSS
 			"sass-loader",
 		],
