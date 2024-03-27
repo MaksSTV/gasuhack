@@ -1,8 +1,8 @@
+import { NewsList } from '@/widgets'
+
 function News() {
 	return (
-		<div>
-			News
-		</div>
+		<NewsList />
 	)
 }
 

@@ -7,4 +7,8 @@ export default class UserService {
 	static fetchUsers(): Promise<AxiosResponse<IUser[]>> {
 		return api.get<IUser[]>('/users')
 	}
+
+	static delMembers(id: string) {
+		return api.delete('/studboard/' + id)
+	}
 }
