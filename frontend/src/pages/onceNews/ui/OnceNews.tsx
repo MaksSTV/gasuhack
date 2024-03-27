@@ -22,10 +22,12 @@ function OnceNews() {
 		<>
 			{
 				onceNew ?
-					<div className="container_news">
-						<button onClick={() => navigate(-1)}>Назад</button>
-						<div className='item'>
-							<img src={onceNew.image} alt="" className="news_img" />
+					<div className="container_OneNews">
+						<button onClick={() => navigate(-1)}
+							className='back__btns'
+						>Назад</button>
+						<div className='oneNews_item'>
+							<img src={onceNew.image} alt="" className="oneNews_img" />
 							<div className="news__header">
 								<div className="news_title">{onceNew.title}</div>
 								<div className="news_date">{getNormalDate(onceNew.date)}</div>

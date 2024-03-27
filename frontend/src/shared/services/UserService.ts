@@ -11,4 +11,14 @@ export default class UserService {
 	static delMembers(id: string) {
 		return api.delete('/studboard/' + id)
 	}
+
+	static addPhoto(file: File) {
+		console.log(file)
+		const formData = new FormData()
+		formData.append("files", file)
+		console.log(formData)
+		return api.post('/uploadFile', {
+			formData
+		})
+	}
 }

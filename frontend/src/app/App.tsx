@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import "./App.scss"
 import { Routes, Route } from 'react-router'
 import { Auth } from '@/widgets'
-import { Admin, Footer, Header, Main, News, OnceNews, StudBoard } from '@/pages'
+import { Admin, Calendar, Contacts, Footer, Header, Main, News, OnceNews, StudBoard } from '@/pages'
 import { Navigate } from 'react-router-dom'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -27,6 +27,8 @@ function App() {
 						<Route path='/news/:id' element={<OnceNews />} />
 						<Route path='/auth' element={<Auth />} />
 						<Route path='/admin' element={<Admin />} />
+						<Route path='/calendar' element={<Calendar />} />
+						<Route path='/contacts' element={<Contacts />} />
 						<Route
 							path="*"
 							element={<Navigate to="/" replace />}

@@ -5,46 +5,17 @@ import axios from 'axios'
 import { getNormalDate } from '../utils'
 import { NavLink } from 'react-router-dom'
 
-const data: INews[] = [
-	{
-		id: 1,
-		image: "true_image.png",
-		title: "Lorem ipsum",
-		description: "fgsgdsgearbgdfbsxbfz fgad fgfdgsdfg dsfg sdfgdwqer ewqghtrh rerer",
-		date: "2024-03-26T00:00:00.000Z"
-	},
-	{
-		id: 2,
-		image: "true_image.png",
-		title: "Lorem ipsum",
-		description: "fgsgdsgearbgdfbsxbfz fgad fgfdgsdfg dsfg sdfgdwqer ewqghtrh rerer",
-		date: "2024-03-26T00:00:00.000Z"
-	},
-	{
-		id: 3,
-		image: "true_image.png",
-		title: "Lorem ipsum",
-		description: "fgsgdsgearbgdfbsxbfz fgad fgfdgsdfg dsfg sdfgdwqer ewqghtrh rerer",
-		date: "2024-03-26T00:00:00.000Z"
-	},
-	{
-		id: 4,
-		image: "true_image.png",
-		title: "Lorem ipsum",
-		description: "fgsgdsgearbgdfbsxbfz fgad fgfdgsdfg dsfg sdfgdwqer ewqghtrh rerer",
-		date: "2024-03-26T00:00:00.000Z"
-	},
-]
+
 
 function NewsList() {
-	const [news, setNews] = useState<INews[]>(data)
+	const [news, setNews] = useState<INews[]>([])
 
 	useEffect(() => {
-		/*async function getNews() {
+		async function getNews() {
 			const { data } = await axios.get<INews[]>('http://localhost:5000/api/news')
-			//setNews(data)
+			setNews(data)
 		};
-		getNews()*/
+		getNews()
 	}, [])
 
 	return (
