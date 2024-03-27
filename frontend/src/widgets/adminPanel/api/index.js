@@ -1,22 +1,22 @@
-export default async function uploadS3(fotos) {
-  let data = fotos.map(v => v)
+import UserService from '@/shared/services/UserService'
 
-  if (data.length > 0) {
-    const formData = new FormData()
+export default async function uploadS3(data) {
 
-    data.map(d => {
-      formData.append("files", d)
-    })
+  /*const formData = new FormData()
 
-    let response = await fetch("http://localhost:8001/uploadFile", {
-      method: "POST",
-      body: formData,
-    })
+  formData.append("files", data)
 
-    let url = await response.json()
+  let response = await fetch("http://localhost:5000/api/uploadFile", {
+    method: "POST",
+    body: formData,
+  })*/
+  console.log(data)
+  let response = await UserService.addPhoto(data)
 
-    url = url.map(u => 'https://storage.yandexcloud.net/e-shop/' + u)
-    console.log(url)
-    return url
-  }
+  let url = await response.json()
+
+  url = url.map(u => 'https://storage.yandexcloud.net/e-shop/' + u)
+  console.log(url)
+  return url
+
 }

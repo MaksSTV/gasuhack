@@ -4,6 +4,7 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import { IMember } from '@/shared/types/user.types'
 import axios from 'axios'
 import UserService from '@/shared/services/UserService'
+import uploadS3 from '../../api'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
 	color: '#ffffff;',
@@ -28,28 +29,18 @@ const VisuallyHiddenInput = styled('input')({
 })
 
 const InputFileUpload = () => {
-	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const file = event.target.files[0]
-		console.log(file)
-		const formData = new FormData()
-		formData.append("file", file)
-		console.log(formData) // Доступ к загруженному файлу
-	}
-
 	const [imageUrl, setImageUrl] = useState(null)
 
-	const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(event)
+	const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
 		const file = event.target.files[0]
-		console.log(file)
-		const reader = new FileReader()
-
-		reader.onloadend = () => {
-			console.log(reader.result)
-			//setImageUrl(reader.result)
+		try {
+			/*const url = await uploadS3(file)
+			setImageUrl(url)
+			console.log(url)*/
+			console.log("Заглушка")
+		} catch (error) {
+			console.error('Error uploading file:', error)
 		}
-
-		reader.readAsDataURL(file)
 	}
 
 	return (
