@@ -3,7 +3,7 @@ import App from "./App"
 import { BrowserRouter } from 'react-router-dom'
 import { createContext } from 'react'
 import Store from './store/store'
-
+import "./reset.scss"
 
 interface State {
 	store: Store
