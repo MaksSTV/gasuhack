@@ -4,9 +4,8 @@
 
 ### Порядок установки:
 
-1. Скачать файлы [install.bat](install.bat){target="_blank" download="install.bat"} и [start.bat](https://github.com/MaksSTV/gasuhack/blob/master/start.bat)
-2. <a href="install.bat" download>Скачать файл</a>
-3. Запустить install.bat, затем start.bat
+1. Скачать файлы [install.bat](install.bat) и [start.bat](start.bat)
+2. Запустить install.bat, затем start.bat
 
 ## ИЛИ
 1. Склонировать проект
