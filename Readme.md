@@ -3,6 +3,11 @@
 ## Клиент-серверное приложение для студенческого совета
 
 ### Порядок установки:
+
+1. Скачать файлы [install.bat](https://github.com/MaksSTV/gasuhack/blob/master/install.bat) и [start.bat](https://github.com/MaksSTV/gasuhack/blob/master/start.bat)
+2. Запустить install.bat, затем start.bat
+--
+## ИЛИ
 1. Склонировать проект
 2. Перейти в директорию **/backend** 
 3. Вставить присланный файл ***.env*** в эту директорию (в нем также логин и пароль для админа)
