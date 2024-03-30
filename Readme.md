@@ -3,7 +3,10 @@
 ## Клиент-серверное приложение для студенческого совета
 
 ### Порядок установки:
-1. Скачать файлы [install.bat](install.bat) и [start.bat](start.bat) и перенести их в желаемую директорию
+1. Склонировать проект в желаемую директорию
+     ```
+    git clone https://github.com/MaksSTV/gasuhack_bat.git
+    ```
 2. Запустить install.bat, затем start.bat
 
 ## ИЛИ
